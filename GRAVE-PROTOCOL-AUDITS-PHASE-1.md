@@ -1,8 +1,7 @@
 # Grave Protocol Smart Contract Audit Report
 
 **Audit Date:** April 18, 2026  
-**Repository:** Private (Grave Protocol)  
-**Commit Hash of Final Fixes:** N/A (provided as final source)  
+**Repository:** Private (Grave Protocol) 
 **Scope:** `GravePresale.sol` · `GraveToken.sol`  
 **Total Findings:** 0 Critical · 0 High · 2 Medium · 3 Low · 2 Informational  
 **Final Status:**  **PRODUCTION READY**
