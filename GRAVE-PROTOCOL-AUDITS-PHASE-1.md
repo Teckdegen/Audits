@@ -1,10 +1,11 @@
 # Grave Protocol Smart Contract Audit Report
 
 **Audit Date:** April 18, 2026  
-**Repository:** Private (Grave Protocol)   
+**Repository:** Private (Grave Protocol)  
+**Commit Hash of Final Fixes:** N/A (provided as final source)  
 **Scope:** `GravePresale.sol` · `GraveToken.sol`  
 **Total Findings:** 0 Critical · 0 High · 2 Medium · 3 Low · 2 Informational  
-**Final Status:**  **PRODUCTION READY**
+**Final Status:** ✅ **PRODUCTION READY**
 
 ---
 
@@ -249,43 +250,9 @@ if (token == address(PEPU_L2) || token == address(GRAVE_TOKEN))
 
 ---
 
-## Deployment Checklist
-
-### Pre‑Deployment – `GraveToken`
-
-- [ ] Deploy implementation contract.
-- [ ] Deploy UUPS proxy pointing to implementation.
-- [ ] Call `initialize(admin, timelockCtrl, treasury, liquidity, marketing, gameRewards, reserve)` **atomically**.
-- [ ] Verify `totalSupply() == 9,600,000,000e18` (80% of 12B).
-- [ ] Verify `remainingMintable() == 2,400,000,000e18` (20% reserved).
-- [ ] Grant `MINTER_ROLE` to the `GravePresale` contract address.
-
-### Pre‑Deployment – `GravePresale`
-
-- [ ] Deploy with correct `_pepuL2`, `_graveToken`, `_backendSigner`, `_hardCap`, `_softCap`, `_maxPerWallet`, `_maxGraveAllocation`, `_initialOwner`.
-- [ ] Ensure `_maxGraveAllocation <= GRAVE_TOKEN.remainingMintable()`.
-- [ ] Owner must be a multisig (2/3 or 3/5) – **not an EOA**.
-
-### Governance Controls
-
-- [ ] Deploy TimelockController (OpenZeppelin) with minimum 48‑hour delay.
-- [ ] Assign `DEFAULT_ADMIN_ROLE` of `GraveToken` to TimelockController.
-- [ ] Assign `UPGRADER_ROLE` of `GraveToken` to same TimelockController.
-- [ ] `PAUSER_ROLE` held by at least two independent wallets (not the owner).
-
-### Post‑Deployment Verification
-
-- [ ] Call `startPresale(durationInDays, hardCap)`.
-- [ ] Test deposit with valid backend signature.
-- [ ] Test `claim()` after finalization.
-- [ ] Test refund mode if soft cap not reached.
-- [ ] Test withdrawal timelock flow.
-
----
-
 ## Conclusion
 
-The contracts are **production ready**. All required security and economic features are correctly implemented. No critical or high‑severity vulnerabilities remain. Deployment must follow the checklist, especially atomic initialization and governance role assignment to a TimelockController and multisig.
+The contracts are **production ready**. All required security and economic features are correctly implemented. No critical or high‑severity vulnerabilities remain.
 
 **Signed,**  
 *Teck – Smart Contract Auditor*  
